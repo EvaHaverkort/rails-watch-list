@@ -17,7 +17,8 @@ class ListsController < ApplicationController
   def create
     @list = List.new(params_list)
     @list.save
-    redirect_to list_path(params[:id])
+    redirect_to list_path(@list.id)
+    # params[:id], List.find(param[:id] is the only time you can use that)
   end
 end
 
