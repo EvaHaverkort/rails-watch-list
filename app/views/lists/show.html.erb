@@ -1,0 +1,23 @@
+<h1><%= @list.name%></h1>
+<%# (ID: <%= @list.id%>
+
+
+<% @bookmarks_this_list.each do |bookmark| %>
+  <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="...">
+  <div class="card-body">
+  <p> <%=bookmark.comment%> (ID: <%=bookmark.movie_id%>) </p>
+  </div>
+  <%= link_to "Delete this bookmark", bookmark_path(bookmark.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete?'} %>
+  <br>
+  </div>
+  <% end %>
+<br>
+<%= link_to "Add bookmark", new_list_bookmark_path(@list.id) %>
+<br>
+<br>
+<%= link_to "Back to lists",  lists_path%>
+
+<%# here the bookmark.id comes from all the bookmarks, you could also write bookmark, and all the bookmarks is all the instance of bookmark in that list%>
+  <%# bookmark_path will search for a get by default, so you need to tell it to look for delete, (action destroy) turbo_method: :delete %>
+  <%# what we had: <%= link_to "Delete this bookmark", bookmark_path(bookmark.id), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete?'} %>

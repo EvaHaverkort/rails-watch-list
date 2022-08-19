@@ -1,0 +1,16 @@
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie %>
+  <%# <%= f.association :list comes from the url %>
+  <%= f.button :submit %>
+<% end %>
+
+<%#
+[@list, @bookmark]
+@list is the parent of @bookmark
+simple_form_for takes the argument that is the path to the post/create
+the action is lists/:list_id/bookmarks, it is where it will go
+rails knows that @bookmark means do the action lists/:list_id/bookmarks
+/bookmark methods post
+
+/list(instance has the id) /bookmark %>
