@@ -7,7 +7,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     # @bookmarks_this_list define the bookmarks that belong to this list
-    @bookmarks_this_list = Bookmark.where(:list_id == @list.id)
+    @bookmarks_this_list = Bookmark.where(list_id: @list.id)
   end
 
   def new
