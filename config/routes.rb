@@ -10,12 +10,13 @@ Rails.application.routes.draw do
   # get "/lists/:id", to: "lists#show", as: :list
   # get "/lists/:list_id/bookmarks/new", to: "bookmarks#new", as: :
   # post "lists/:list_id/bookmarks", to: "bookmarks#create"
-
+  root to: "lists#index"
   resources :lists do
     resources :bookmarks, except: [:destroy]
   end
 
   resources :bookmarks, only: :destroy
+
   # if you only have one you don't need the []
 
   # resources :bookmarks, only: :destroy same as:
