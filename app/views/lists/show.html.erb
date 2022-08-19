@@ -1,6 +1,12 @@
 <h1><%= @list.name%></h1>
 <%# (ID: <%= @list.id%>
 
+<% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(movie_id: movie.id) %>
+  <%= bookmark.comment %>
+  <%= bookmark.movie.title %>
+<% end %>
+
 
 <% @bookmarks_this_list.each do |bookmark| %>
   <div class="card" style="width: 18rem;">

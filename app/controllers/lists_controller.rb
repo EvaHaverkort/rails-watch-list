@@ -15,9 +15,15 @@ class ListsController < ApplicationController
   end
 
   def create
+    # @list = List.new(params_list)
+    # @list.save
+    # redirect_to list_path(@list.id)
     @list = List.new(params_list)
-    @list.save
-    redirect_to list_path(@list.id)
+    if @list.save
+      redirect_to list_path(@list)
+    else
+      render :new, status: :unprocessable_entity
+    end
     # params[:id], List.find(param[:id] is the only time you can use that)
   end
 end
