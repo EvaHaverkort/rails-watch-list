@@ -12,7 +12,8 @@ class BookmarksController < ApplicationController
       if @bookmark.save
         redirect_to @list
       else
-        render :new
+        render :new, status: :unprocessable_entity
+        # you want to say that if something is not saved that it was not save 
       end
   end
 
