@@ -6,15 +6,15 @@ class BookmarksController < ApplicationController
 
   def create
     @list = List.find(params[:list_id]) # I find the list in the url
-    @bookmark = Bookmark.new(params_list)
+    @bookmark = Bookmark.new(params_bookmark)
     @bookmark.list = @list
 
-      if @bookmark.save
-        redirect_to list_path(@list)
-      else
-        render :new, status: :unprocessable_entity
+    if @bookmark.save
+      redirect_to list_path(@list)
+    else
+      render :new, status: :unprocessable_entity
         # you want to say that if something is not saved that it was not save
-      end
+    end
   end
 
   def destroy
@@ -27,6 +27,6 @@ end
 
 private
 
-def params_list
+def params_bookmark
   params.require(:bookmark).permit(:comment, :movie_id) #only what comes in the form
 end
